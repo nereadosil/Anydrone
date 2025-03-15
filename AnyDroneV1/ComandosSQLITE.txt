@@ -1,0 +1,48 @@
+INSERT INTO usuarios (nombre, correo, contraseña, tipo_usuario) VALUES 
+('Juan Pérez', 'juan@email.com', 'hashed_password', 'propietario'),
+('Ana Gómez', 'ana@email.com', 'hashed_password', 'cliente'),
+('Carlos Méndez', 'carlos@email.com', 'hashed_password', 'propietario'),
+('Laura García', 'laura@email.com', 'hashed_password', 'cliente'),
+('Miguel Fernández', 'miguel@email.com', 'hashed_password', 'propietario');
+
+INSERT INTO drones (id_propietario, modelo, fabricante, calidad_camara, capacidad_carga, autonomia_vuelo, estado) VALUES
+(1, 'DJI Phantom 4', 'DJI', '4K', 2.5, 30, 'disponible'),
+(1, 'Mavic Air 2', 'DJI', '4K', 1.2, 34, 'ocupado'),
+(3, 'Parrot Anafi', 'Parrot', '4K HDR', 0.5, 25, 'disponible'),
+(3, 'Autel EVO II', 'Autel', '8K', 2.0, 40, 'mantenimiento'),
+(5, 'Skydio 2', 'Skydio', '4K HDR', 0.7, 23, 'disponible');
+
+INSERT INTO servicios (id_cliente, id_drone, tipo_servicio, ubicacion_origen, ubicacion_destino, costo_estimado) VALUES
+(2, 1, 'fotografía', '40.712776,-74.005974', '40.758896,-73.985130', 150.00),
+(2, 2, 'inspección', '40.730610,-73.935242', '40.650002,-73.949997', 200.00),
+(4, 3, 'envío', '41.40338,2.17403', '41.37880,2.19241', 80.00),
+(4, 4, 'topografía', '39.46975,-0.37739', '39.47024,-0.37680', 120.00),
+(5, 5, 'fotografía', '48.8566,2.3522', '48.8588,2.2945', 180.00);
+
+INSERT INTO precios (id_servicio, factor_calidad, factor_distancia, precio_final) VALUES
+(1, 1.2, 1.5, 180.00),
+(2, 1.0, 2.0, 220.00),
+(3, 0.9, 1.2, 96.00),
+(4, 1.1, 1.3, 140.00),
+(5, 1.3, 1.8, 230.00);
+
+INSERT INTO vuelos (id_drone, fecha_vuelo, ubicacion_inicial, ubicacion_final, altitud_maxima, velocidad_promedio, estado_vuelo) VALUES
+(1, '2025-03-10 10:00:00', '40.712776,-74.005974', '40.758896,-73.985130', 120.5, 15.2, 'completado'),
+(2, '2025-03-09 15:30:00', '40.730610,-73.935242', '40.650002,-73.949997', 80.0, 12.5, 'completado'),
+(3, '2025-03-08 12:45:00', '41.40338,2.17403', '41.37880,2.19241', 90.2, 14.0, 'fallido'),
+(4, '2025-03-07 09:20:00', '39.46975,-0.37739', '39.47024,-0.37680', 95.0, 13.8, 'completado'),
+(5, '2025-03-06 18:10:00', '48.8566,2.3522', '48.8588,2.2945', 110.7, 16.5, 'en curso');
+
+INSERT INTO resenas (id_servicio, id_revisor, puntuacion, comentario) VALUES
+(1, 2, 5, 'Excelente servicio, imágenes de gran calidad.'),
+(2, 2, 4, 'Buen trabajo, aunque hubo un ligero retraso.'),
+(3, 4, 3, 'El drone tuvo problemas en el vuelo.'),
+(4, 4, 5, 'Trabajo impecable, muy profesional.'),
+(5, 5, 2, 'No se completó el servicio debido al clima.');
+
+INSERT INTO pagos (id_servicio, id_cliente, monto, estado, metodo_pago) VALUES
+(1, 2, 150.00, 'pagado', 'tarjeta'),
+(2, 2, 200.00, 'pendiente', 'paypal'),
+(3, 4, 80.00, 'pagado', 'transferencia'),
+(4, 4, 120.00, 'pagado', 'tarjeta'),
+(5, 5, 180.00, 'fallido', 'paypal');
