@@ -36,8 +36,10 @@ async def scan_ble():
                     print(f"  ➤ Protocol Version: {protocol_version}")
                     
                     if msg_type == 0x00:  # Basic ID Message
+                        type= value[1].decode
                         uas_id = value[2:22].decode(errors='ignore').strip('\x00')
                         print(f"    ➤ UAS ID: {uas_id}")
+                        print(f"    ➤ ID and UA type: {type}")
                     elif msg_type == 0x01:  # Location/Vector Message
                         latitude, longitude = struct.unpack('<ii', value[5:13])
                         print(f"    ➤ Latitude: {latitude / 1e7}, Longitude: {longitude / 1e7}")
