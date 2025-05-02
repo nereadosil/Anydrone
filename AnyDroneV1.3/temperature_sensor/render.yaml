@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: sensor-web-view
+    env: python
+    buildCommand: ""
+    startCommand: python3 web_stream.py
+    envVars:
+      - key: GOOGLE_APPLICATION_CREDENTIALS
+        value: firebase_key.json
+    plan: free
