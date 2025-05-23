@@ -1,2 +1,0 @@
-# AnyDrone
-future billionare idea 
